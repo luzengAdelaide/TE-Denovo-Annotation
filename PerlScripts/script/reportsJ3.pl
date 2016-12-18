@@ -23,7 +23,7 @@ while (<INFILE>) {
 #  system ("/home/a1635743/report_run/piler -annot $dataDir$_.gff -rep $_.tewb.gff -out $_.tewbannot.gff");
 #  system ("python /home/a1635743/report_run/gff_pretty.py $_.tewbannot.gff > $_.tewbannot.txt");
 
-  system ("tblastx /home/a1635743/BlastDB/all_retrovirus.fasta $dataDir$_ -gspmax=1 -E $ECrit -B 1 -V 1 -cpus=4 > $_.ervwb");
+  system ("tblastx /home/a1635743/BlastDB/all_retrovirus.fasta $dataDir$_ -gspmax=1 -E $ECrit -B 1 -V 1 -cpus=32 > $_.ervwb");
   system ("python /home/a1635743/report_run/wublastx2gff.py $_.ervwb > $_.ervwb.gff");
   system ("python /home/a1635743/report_run/gff_pretty.py $_.ervwb.gff > $_.ervwb.txt");
   system ("/home/a1635743/report_run/piler -annot $dataDir$_.gff -rep $_.ervwb.gff -out $_.ervwbannot.gff");
