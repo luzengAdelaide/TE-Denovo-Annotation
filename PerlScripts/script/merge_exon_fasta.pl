@@ -2,7 +2,7 @@
 ## merge exons from same gene name
                                               
 open(IN,$ARGV[0]);
-#open(OUT,">".$ARGV[1]);
+open(OUT,">".$ARGV[1]);
 
 $/=">";
 while(<IN>){
@@ -11,16 +11,15 @@ while(<IN>){
     next if ($_ eq "");
     $tmp=$_;
     @single=split("\n",$tmp,2);
-    $single[0]=~/^(\w+)\(/;
+    $single[0]=~/^(\w+)/;
     $id=$1;
-#    print "$id\n";
     $seq=$single[1];
     $seq=~s/\n//g;
     $hash_gene{$id}=$hash_gene{$id}.$seq;
 }
 
 foreach $gene (keys %hash_gene){
-    print  ">".$gene."\n".$hash_gene{$gene}."\n";
+    print OUT ">".$gene."\n".$hash_gene{$gene}."\n";
 }
 
 close IN;
