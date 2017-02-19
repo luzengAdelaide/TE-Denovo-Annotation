@@ -38,7 +38,7 @@ while (<IN>){
     $head = $tmp[0];
     $head =~s/\>//;
     $seq2 = $tmp[1];
-#    $seq2 =~s/\n//g;
+    $seq2 =~s/\n//g;
     print OUTA "\>$_", if length($seq2) < 2000;
     print OUTB "\>$_", if length($seq2) >=2000 && length($seq2) < 3000;
     print OUTC "\>$_", if length($seq2) >=3000 && length($seq2) < 4000;
