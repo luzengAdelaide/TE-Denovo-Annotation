@@ -7,6 +7,8 @@ open(IN,"$file");
 $/=">";
 while(<IN>){
     chomp;   
+    $_=~s/>//;
+    next if ($_ eq "");
     my @single = split("\n",$_,2);
     if ($single[0] =~ /family[\w\_]+\:L2/){
 #    if ($single[0] =~ /family[\w\_]+\:CR1/){
